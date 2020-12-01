@@ -2,16 +2,18 @@ const app = new Vue({
    el: '#root',
    data:{
       cds: null,
-      filteredCds: null,
       genre: ''
    },
    methods:{
-      filterCd: function(){
-      this.filteredCds = this.cds.filter(e => e.genre == this.genre);
-   },
       deleteFilter: function (){
-         this.filteredCds = null;
          this.genre = '';
+      },
+      getCd: function (){
+         if (this.genre == ''){
+            return this.cds
+         } else {
+            return this.cds.filter(e => e.genre == this.genre)
+         }
       }
    },
    mounted: function(){

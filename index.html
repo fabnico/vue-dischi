@@ -13,16 +13,33 @@
         <header>
             <div class="container">
                 <img src="logo.png" alt="logo" />
+                <select v-model="genre" @change="filterCd">
+                   <option value="Pop">Pop</option>
+                   <option value="Rock">Rock</option>
+                   <option value="Metal">Metal</option>
+                   <option value="Jazz">Jazz</option>
+                </select>
             </div>
         </header>
         <div class="cds-container container">
             <!-- Disco ad esempio -->
-            <div v-for="cd in cds"class="cd">
+            <template v-if="filteredCds === null">
+               <div v-for="cd in cds"class="cd">
+                   <img :src="cd.poster" alt="Copertina album">
+                   <h3>{{cd.title}}</h3>
+                   <span class="author">{{cd.author}}</span>
+                   <span class="year">{{cd.year}}</span>
+               </div>
+            </template>
+
+            <template v-else>
+            <div v-for="cd in filteredCds"class="cd">
                 <img :src="cd.poster" alt="Copertina album">
                 <h3>{{cd.title}}</h3>
                 <span class="author">{{cd.author}}</span>
                 <span class="year">{{cd.year}}</span>
             </div>
+            </template>
         </div>
      </div>
         <script src="main.js" charset="utf-8"></script>

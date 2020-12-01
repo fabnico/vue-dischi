@@ -19,6 +19,7 @@
                    <option value="Metal">Metal</option>
                    <option value="Jazz">Jazz</option>
                 </select>
+                <button v-if="filteredCds !== null" @click="deleteFilter"type="button" name="button">Elimina filtro</button>
             </div>
         </header>
         <div class="cds-container container">

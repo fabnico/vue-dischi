@@ -8,6 +8,10 @@ const app = new Vue({
    methods:{
       filterCd: function(){
       this.filteredCds = this.cds.filter(e => e.genre == this.genre);
+   },
+      deleteFilter: function (){
+         this.filteredCds = null;
+         this.genre = '';
       }
    },
    mounted: function(){
